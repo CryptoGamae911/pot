@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page with Pop-ups</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <div class="payment-container">
+        <header>
+            <a href="#" class="back-btn">←</a>
+            <h1>Select payment method</h1>
+            <p class="par1">Amount to pay:</p>
+        </header>
+        <div class="payment-method">
+            <h2>Internet Banking</h2>
+            <div class="method" onclick="showPopup('bank-popup')">
+                <img class="card2" src="internet.png" alt="Card Icon">
+                <span class="par">Internet Banking</span>
+                <span class="arrow">›</span>
+            </div>
+        </div>
+        <div class="payment-method">
+            <h2>UPI</h2>
+            <div class="method" onclick="showPopup('upi-popup')">
+                <img class="card1" src="upi.png" alt="UPI Icon">
+                <span class="par">Add a new UPI ID</span>
+                <span class="arrow">›</span>
+            </div>
+        </div>
+        <div class="payment-method">
+            <h2>Cards</h2>
+            <div class="method" onclick="showPopup('card-popup')">
+                <img class="card" src="card.png" alt="Card Icon">
+                <span class="par">Add a new Card</span>
+                <span class="arrow">›</span>
+            </div>
+        </div>
+        <div class="payment-method">
+            <h2>Cards</h2>
+            <div class="method">
+                <img class="card" src="note.webp" alt="Card Icon">
+                <span class="par2">Pay with cash after service</span>
+                <span class="arrow">›</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bank Selection Pop-up -->
+    <div class="popup" id="bank-popup">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h2>Internet Banking</h2>
+                <span class="close-btn" onclick="hidePopup('bank-popup')">×</span>
+            </div>
+            <input type="text" placeholder="Search bank name" class="search-box">
+            <div class="bank-list">
+                <div class="bank-item"><img class="imeg" src="axis.png" alt="">&nbsp;&nbsp;&nbsp;Axis Bank ›</div>
+                <div class="bank-item"><img class="imeg" src="canara.png" alt="">&nbsp;&nbsp;&nbsp;Canara Bank ›</div>
+                <div class="bank-item"><img class="imeg" src="hdfc.png" alt="">&nbsp;&nbsp;&nbsp;HDFC Bank ›</div>
+                <div class="bank-item"><img class="imeg" src="icici.png" alt="">&nbsp;&nbsp;&nbsp;ICICI Netbanking ›
+                </div>
+                <div class="bank-item"><img class="imeg" src="indianoversea.png" alt="">&nbsp;&nbsp;&nbsp;Indian
+                    Overseas Bank ›</div>
+                <div class="bank-item"><img class="imeg" src="indusland.png" alt="">&nbsp;&nbsp;&nbsp;IndusInd Bank ›
+                </div>
+                <div class="bank-item"><img class="imeg" src="kotak.png" alt="">&nbsp;&nbsp;&nbsp;Kotak Bank ›</div>
+                <div class="bank-item"><img class="imeg" src="sbi.png" alt="">&nbsp;&nbsp;&nbsp;State Bank of India ›
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- UPI Pop-up -->
+    <div class="popup" id="upi-popup">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h2>Add new UPI</h2>
+                <span class="close-btn" onclick="hidePopup('upi-popup')">×</span>
+            </div>
+            <form>
+                <input type="text" placeholder="12345678@upi" class="input-box">
+                <div class="checkbox">
+                    <input type="checkbox" id="save-upi">
+                    <label for="save-upi">Save my UPI ID securely</label>
+                </div>
+                <button type="button" class="proceed-btn" onclick="submitUpiPayment()">Proceed to pay</button>
+            </form>
+        </div>
+    </div>
+    <div class="popup" class="popup1" id="card-popup">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h2>Add new Card</h2>
+                <span class="close-btn" onclick="hidePopup('card-popup')">×</span>
+            </div>
+            <form>
+                <label for="card-number">Card Number</label>
+                <input type="text" id="card-number" placeholder="Card Number">
+
+                <label for="expiry-date">Expiry Date (MM/YY)</label>
+                <input type="text" id="expiry-date" placeholder="MM/YY">
+
+                <label for="cvv">CVV</label>
+                <input type="password" id="cvv" placeholder="CVV">
+
+                <div>
+                    <input type="checkbox" id="save-card">
+                    <label for="save-card">Save the card details (except CVV) securely. 
+                    <a href="#">Knowmore</a></label>
+                </div>
+
+                <button>Save & proceed</button>
+            </form>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    
+</body>
+
+</html>
